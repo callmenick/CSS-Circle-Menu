@@ -4,6 +4,14 @@ My circular fly-out CSS navigation menu component, built with CSS3.
 
 ![Circle fly out menu](css-circle-menu-featured.png)
 
+Install via bower:
+
+```bash
+bower install css-circle-menu
+```
+
+Or you can download the source files directly.
+
 ## Component Configuration & Compilation
 
 The component makes heavy use of Sass, and also some Compass math helper functions. Sass is compiled via Gulp, and using Sass makes the component easily configurable. The menu items fly out along a quarter-circle with a given spread radius, so basic trigonometry and polar-to-cartesian math make calculating positions much easier, hence the use of Compass helpers. The general workflow for the compilation of the CSS is this:
