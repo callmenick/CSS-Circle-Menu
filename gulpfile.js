@@ -15,14 +15,12 @@ var uglify = require('gulp-uglify');
 
 // js task
 gulp.task('js', function() {
-  return gulp.src('./js/src/*.js')
-    .pipe(concat('demo.js'))
-    .pipe(gulp.dest('./js/dist/'))
+  return gulp.src('./js/circleMenu.js')
     .pipe(uglify())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('./js/dist/'));
+    .pipe(gulp.dest('./js/'));
 });
 
 // styles task
