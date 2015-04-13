@@ -1,0 +1,395 @@
+/* -----------------------------------------------------------------------------
+
+  CIRCLE NAV COMPONENT
+
+----------------------------------------------------------------------------- */
+/**
+ * This is the actual nav component. It consists of a nav element with an
+ * unordered list inside, and also a button to toggle the actual navigation.
+ * It's fixed to the bottom-right of the screen, and each of the items are
+ * positioned absolutely inside the parent nav tag. The default set up above is
+ * 5 navigation items. Because all the transforms and such are calculated wrt
+ * this number, you'll need to edit it accordingly depending on how many items
+ * you decide to put in the markup.
+ * 
+ * Example markup:
+ *
+ * <nav class="c-circle-nav">
+ *   <ul class="c-circle-nav__items">
+ *     <li class="c-circle-nav__item">
+ *       <a class="c-circle-nav__link"></a>
+ *     </li>
+ *     <li class="c-circle-nav__item">
+ *       <a class="c-circle-nav__link"></a>
+ *     </li>
+ *     ...
+ *   </ul>
+ * </nav>
+ */
+.c-circle-nav {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav {
+    width: 96px;
+    height: 96px;
+    border-radius: 48px;
+  }
+}
+
+.c-circle-nav__items {
+  display: block;
+  list-style: none;
+  position: absolute;
+  z-index: 90;
+  margin: 0;
+  padding: 0;
+}
+
+.c-circle-nav__item {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  opacity: 0;
+  -webkit-transition-property: -webkit-transform, opacity;
+          transition-property: transform, opacity;
+  -webkit-transition-duration: 0.3s, 0.3s;
+          transition-duration: 0.3s, 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.35, -0.59, 0.47, 0.97);
+          transition-timing-function: cubic-bezier(0.35, -0.59, 0.47, 0.97);
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav__item {
+    width: 96px;
+    height: 96px;
+    border-radius: 48px;
+  }
+}
+
+/**
+ * Transisition delays at the default state.
+ */
+.c-circle-nav__item:nth-child(1) {
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+.c-circle-nav__item:nth-child(2) {
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+.c-circle-nav__item:nth-child(3) {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+.c-circle-nav__item:nth-child(4) {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+
+.c-circle-nav__item:nth-child(5) {
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+/**
+ * We're using the .is-active class, which is added to the nav via JavaScript.
+ * Once the nav is active, the items inherit the properties below. We will
+ * manually write out the transform properties for first and last items, as we
+ * already know their position. For all items in between though, we'll use some
+ * polar-to-cartesian math and some Sass functions to get the positioning.
+ */
+.c-circle-nav.is-active .c-circle-nav__item {
+  -webkit-transition-timing-function: cubic-bezier(0.35, 0.03, 0.47, 1.59);
+          transition-timing-function: cubic-bezier(0.35, 0.03, 0.47, 1.59);
+}
+
+.c-circle-nav.is-active .c-circle-nav__item:nth-child(1) {
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  -webkit-transform: translate(-144px, 0);
+      -ms-transform: translate(-144px, 0);
+          transform: translate(-144px, 0);
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav.is-active .c-circle-nav__item:nth-child(1) {
+    -webkit-transform: translate(-288px, 0);
+        -ms-transform: translate(-288px, 0);
+            transform: translate(-288px, 0);
+  }
+}
+
+.c-circle-nav.is-active .c-circle-nav__item:nth-child(2) {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+  -webkit-transform: translate(-134px, -56px);
+      -ms-transform: translate(-134px, -56px);
+          transform: translate(-134px, -56px);
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav.is-active .c-circle-nav__item:nth-child(2) {
+    -webkit-transform: translate(-267px, -111px);
+        -ms-transform: translate(-267px, -111px);
+            transform: translate(-267px, -111px);
+  }
+}
+
+.c-circle-nav.is-active .c-circle-nav__item:nth-child(3) {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+  -webkit-transform: translate(-102px, -102px);
+      -ms-transform: translate(-102px, -102px);
+          transform: translate(-102px, -102px);
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav.is-active .c-circle-nav__item:nth-child(3) {
+    -webkit-transform: translate(-204px, -204px);
+        -ms-transform: translate(-204px, -204px);
+            transform: translate(-204px, -204px);
+  }
+}
+
+.c-circle-nav.is-active .c-circle-nav__item:nth-child(4) {
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+  -webkit-transform: translate(-56px, -134px);
+      -ms-transform: translate(-56px, -134px);
+          transform: translate(-56px, -134px);
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav.is-active .c-circle-nav__item:nth-child(4) {
+    -webkit-transform: translate(-111px, -267px);
+        -ms-transform: translate(-111px, -267px);
+            transform: translate(-111px, -267px);
+  }
+}
+
+.c-circle-nav.is-active .c-circle-nav__item:nth-child(5) {
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+  -webkit-transform: translate(0, -144px);
+      -ms-transform: translate(0, -144px);
+          transform: translate(0, -144px);
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav.is-active .c-circle-nav__item:nth-child(5) {
+    -webkit-transform: translate(0, -288px);
+        -ms-transform: translate(0, -288px);
+            transform: translate(0, -288px);
+  }
+}
+
+/**
+ * Apart from the transform properties, we'll also make sure the items get
+ * the correct opacity.
+ */
+.c-circle-nav.is-active .c-circle-nav__item {
+  opacity: 1;
+}
+
+/**
+ * Let's style the links now. This is just boilerplate stuff, and of course,
+ * you'll probably want to change up the icons to match your needs. In any case,
+ * we'll do it here for the sake of completion.
+ */
+.c-circle-nav__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  box-shadow: inset 0 0 0 2px #fff;
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav__link {
+    border-radius: 48px;
+  }
+}
+
+.c-circle-nav__link img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.c-circle-nav__link:hover {
+  box-shadow: inset 0 0 0 2px #ff283c;
+}
+
+/* -----------------------------------------------------------------------------
+
+  THE TOGGLE COMPONENT
+
+----------------------------------------------------------------------------- */
+/**
+ * The toggle is a button element, and as such requires some resets that are
+ * unique to buttons. This button also inherits some funky stuff from my
+ * CSS animating hamburger menu icons demo, which can be found at this url:
+ * https://github.com/callmenick/Animating-Hamburger-Icons
+ */
+.c-circle-nav__toggle {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  background-color: #ff283c;
+  font: inherit;
+  font-size: 0;
+  text-indent: -9999px;
+  border-radius: 24px;
+  -webkit-transition: background 0.3s;
+          transition: background 0.3s;
+  /* reset some browser defaults */
+  cursor: pointer;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav__toggle {
+    width: 96px;
+    height: 96px;
+    border-radius: 48px;
+  }
+}
+
+.c-circle-nav__toggle:hover,
+.c-circle-nav__toggle:focus,
+.c-circle-nav__toggle.is-active {
+  outline: none;
+  background-color: #c10012;
+}
+
+.c-circle-nav__toggle span,
+.c-circle-nav__toggle span::before,
+.c-circle-nav__toggle span::after {
+  display: block;
+  position: absolute;
+  height: 4px;
+  background: #fff;
+  border-radius: 1px;
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav__toggle span,
+  .c-circle-nav__toggle span::before,
+  .c-circle-nav__toggle span::after {
+    height: 8px;
+    border-radius: 2px;
+  }
+}
+
+.c-circle-nav__toggle span {
+  top: 22px;
+  left: 10px;
+  right: 10px;
+  -webkit-transition: background 0.3s;
+          transition: background 0.3s;
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav__toggle span {
+    top: 44px;
+    left: 20px;
+    right: 20px;
+  }
+}
+
+.c-circle-nav__toggle span::before,
+.c-circle-nav__toggle span::after {
+  left: 0;
+  width: 100%;
+  content: "";
+  -webkit-transition-duration: 0.3s, 0.3s;
+          transition-duration: 0.3s, 0.3s;
+  -webkit-transition-delay: 0.3s, 0s;
+          transition-delay: 0.3s, 0s;
+}
+
+.c-circle-nav__toggle span::before {
+  top: -8px;
+  -webkit-transition-property: top, -webkit-transform;
+          transition-property: top, transform;
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav__toggle span::before {
+    top: -16px;
+  }
+}
+
+.c-circle-nav__toggle span::after {
+  bottom: -8px;
+  -webkit-transition-property: bottom, -webkit-transform;
+          transition-property: bottom, transform;
+}
+@media (min-width: 480px) and (min-height: 480px) {
+  .c-circle-nav__toggle span::after {
+    bottom: -16px;
+  }
+}
+
+/* button active state */
+.c-circle-nav__toggle.is-active span {
+  background: none;
+}
+
+.c-circle-nav__toggle.is-active span::before {
+  top: 0;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transition-delay: 0s, 0.3s;
+          transition-delay: 0s, 0.3s;
+}
+
+.c-circle-nav__toggle.is-active span::after {
+  bottom: 0;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transition-delay: 0s, 0.3s;
+          transition-delay: 0s, 0.3s;
+}
+
+/* -----------------------------------------------------------------------------
+
+  THE MASK COMPONENT
+
+----------------------------------------------------------------------------- */
+/**
+ * Here's the mask component, which actually gets created and inserted to the 
+ * DOM via JavaScript. It simply acts as an overlay to draw attention to the 
+ * navigation when it is active. It also uses the .is-acvite state class.
+ */
+.c-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-transition: opacity 0.3s, visibility 0.3s;
+          transition: opacity 0.3s, visibility 0.3s;
+}
+
+.c-mask.is-active {
+  opacity: 1;
+  visibility: visible;
+}

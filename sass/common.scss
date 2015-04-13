@@ -1,0 +1,414 @@
+// -----------------------------------------------------------------------------
+// 
+// IMPORT VARIABLES
+// 
+// -----------------------------------------------------------------------------
+
+@import "_variables";
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  FONTS
+
+----------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/oxygen/oxygen-v5-latin-300.eot');
+  src: local('Oxygen Light'), local('Oxygen-Light'),
+       url('../fonts/oxygen/oxygen-v5-latin-300.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/oxygen/oxygen-v5-latin-300.woff2') format('woff2'),
+       url('../fonts/oxygen/oxygen-v5-latin-300.woff') format('woff'),
+       url('../fonts/oxygen/oxygen-v5-latin-300.ttf') format('truetype'),
+       url('../fonts/oxygen/oxygen-v5-latin-300.svg#Oxygen') format('svg');
+}
+
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/oxygen/oxygen-v5-latin-regular.eot');
+  src: local('Oxygen'), local('Oxygen-Regular'),
+       url('../fonts/oxygen/oxygen-v5-latin-regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/oxygen/oxygen-v5-latin-regular.woff2') format('woff2'),
+       url('../fonts/oxygen/oxygen-v5-latin-regular.woff') format('woff'),
+       url('../fonts/oxygen/oxygen-v5-latin-regular.ttf') format('truetype'),
+       url('../fonts/oxygen/oxygen-v5-latin-regular.svg#Oxygen') format('svg');
+}
+
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/oxygen/oxygen-v5-latin-700.eot');
+  src: local('Oxygen Bold'), local('Oxygen-Bold'),
+       url('../fonts/oxygen/oxygen-v5-latin-700.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/oxygen/oxygen-v5-latin-700.woff2') format('woff2'),
+       url('../fonts/oxygen/oxygen-v5-latin-700.woff') format('woff'),
+       url('../fonts/oxygen/oxygen-v5-latin-700.ttf') format('truetype'),
+       url('../fonts/oxygen/oxygen-v5-latin-700.svg#Oxygen') format('svg');
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  ROOT
+
+----------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  color: $color--neutral;
+  background-color: rgb(39, 39, 39);
+  font-family: $font-family--primary;
+  font-size: $font-size--small;
+  line-height: $line-height--medium;
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  HEADINGS
+
+----------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $color--neutral-dark;
+  font-weight: 700;
+  line-height: $line-height--small;
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  LINKS
+
+----------------------------------------------------------------------------- */
+
+a {
+  color: $color--theme;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $color--theme-dark;
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+  
+  TEXT STUFFS
+
+----------------------------------------------------------------------------- */
+
+b,
+strong {
+  font-weight: 700;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+  
+  EMBEDDED CONTENT
+
+----------------------------------------------------------------------------- */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+  
+  PRIMARY LAYOUT STUFF
+
+----------------------------------------------------------------------------- */
+
+.container {
+  margin: 0 auto;
+  padding: 0 24px;
+  max-width: 960px;
+}
+
+@media all and ( min-width: $breakpoint--small ) {
+
+  .container {
+    padding: 0 24px;
+  }
+
+}
+
+@media all and ( min-width: $breakpoint--medium ) {
+
+  .container {
+    padding: 0 48px;
+  }
+
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+  
+  DEMO HEADER
+
+----------------------------------------------------------------------------- */
+
+.demo-header {
+  margin: 0;
+  padding: 0;
+}
+
+.demo-header-nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: $color--theme;
+}
+
+.demo-header-nav__link {
+  padding: 12px;
+  color: #fff;
+}
+
+.demo-header-nav__link:hover {
+  color: #fff;
+  background-color: $color--theme-dark;
+}
+
+.demo-header__title {
+  margin: 24px;
+  padding: 0;
+  color: #fff;
+  font-size: $font-size--xlarge;
+  font-weight: 300;
+  text-align: center;
+}
+
+@media all and ( min-width: $breakpoint--small ) {
+  
+  .demo-header__title {
+    margin: 36px;
+    font-size: $font-size--ultra;
+  }
+
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  DEMO CONTENT
+
+----------------------------------------------------------------------------- */
+
+.leader-text {
+  color: $color--neutral-xlight;
+  font-size: $font-size--medium;
+  font-weight: 300;
+}
+
+@media all and ( min-width: $breakpoint--small ) {
+
+  .leader-text {
+    font-size: $font-size--large;
+  }
+
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  DEMO CONTENT NAVIGATION
+
+----------------------------------------------------------------------------- */
+
+.demo-sub-nav {
+  margin: 0 0 24px 0;
+  padding: 0;
+}
+
+.demo-sub-nav__items {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.demo-sub-nav__item {
+  margin: 0;
+  padding: 4px;
+}
+
+.demo-sub-nav__link {
+  display: block;
+  margin: 0;
+  padding: 4px 24px;
+  border: solid 2px $color--theme;
+}
+
+.demo-sub-nav__link:hover,
+.demo-sub-nav__item.active .demo-sub-nav__link {
+  color: #fff;
+  background-color: $color--theme;
+}
+
+@media all and ( min-width: $breakpoint--medium ) {
+  
+  .demo-sub-nav {
+    margin: 0 0 48px 0;
+  }
+
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  DEMO FOOTER
+
+----------------------------------------------------------------------------- */
+
+.demo-footer {
+  padding: 12px 0;
+  text-align: center;
+}
+
+@media all and ( min-width: $breakpoint--small ) {
+
+  .demo-footer {
+    padding: 24px 0;
+  }
+
+}
+
+@media all and ( min-width: $breakpoint--medium ) {
+
+  .demo-footer {
+    padding: 48px 0;
+  }
+
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  CARBON AD
+  
+----------------------------------------------------------------------------- */
+
+#carbonads {
+  position: fixed;
+  bottom: 12px; left: 12px;
+  z-index: 1000;
+  padding: 24px 12px 12px 12px;
+  width: 154px;
+  background-color: #fff;
+  line-height: 1.1;
+  border: solid 1px $color--neutral-xxlight;
+}
+
+.carbon-wrap {
+  display: block;
+  margin: 0 0 4px 0;
+}
+
+.carbon-img {
+  display: block;
+  margin: 0 0 4px 0;
+  padding: 0;
+  width: 130px;
+  height: 100px;
+}
+
+.carbon-text {
+  color: rgb(129,129,129);
+  font-size: 12px;
+}
+
+.carbon-poweredby {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.carbonad__close {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 12px;
+  height: 24px;
+  font-size: 11px;
+  line-height: 24px;
+}
+
+@media all and ( max-width: 660px ) {
+  
+  #carbonads {
+    display: none;
+  }
+
+}

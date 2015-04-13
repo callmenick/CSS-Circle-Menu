@@ -1,0 +1,320 @@
+/* -----------------------------------------------------------------------------
+
+  FONTS
+
+----------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/oxygen/oxygen-v5-latin-300.eot");
+  src: local("Oxygen Light"), local("Oxygen-Light"), url("../fonts/oxygen/oxygen-v5-latin-300.eot?#iefix") format("embedded-opentype"), url("../fonts/oxygen/oxygen-v5-latin-300.woff2") format("woff2"), url("../fonts/oxygen/oxygen-v5-latin-300.woff") format("woff"), url("../fonts/oxygen/oxygen-v5-latin-300.ttf") format("truetype"), url("../fonts/oxygen/oxygen-v5-latin-300.svg#Oxygen") format("svg");
+}
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/oxygen/oxygen-v5-latin-regular.eot");
+  src: local("Oxygen"), local("Oxygen-Regular"), url("../fonts/oxygen/oxygen-v5-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/oxygen/oxygen-v5-latin-regular.woff2") format("woff2"), url("../fonts/oxygen/oxygen-v5-latin-regular.woff") format("woff"), url("../fonts/oxygen/oxygen-v5-latin-regular.ttf") format("truetype"), url("../fonts/oxygen/oxygen-v5-latin-regular.svg#Oxygen") format("svg");
+}
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/oxygen/oxygen-v5-latin-700.eot");
+  src: local("Oxygen Bold"), local("Oxygen-Bold"), url("../fonts/oxygen/oxygen-v5-latin-700.eot?#iefix") format("embedded-opentype"), url("../fonts/oxygen/oxygen-v5-latin-700.woff2") format("woff2"), url("../fonts/oxygen/oxygen-v5-latin-700.woff") format("woff"), url("../fonts/oxygen/oxygen-v5-latin-700.ttf") format("truetype"), url("../fonts/oxygen/oxygen-v5-latin-700.svg#Oxygen") format("svg");
+}
+/* -----------------------------------------------------------------------------
+
+  ROOT
+
+----------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  color: #6d6d6d;
+  background-color: #272727;
+  font-family: "Oxygen", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* -----------------------------------------------------------------------------
+
+  HEADINGS
+
+----------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #3b3b3b;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* -----------------------------------------------------------------------------
+
+  LINKS
+
+----------------------------------------------------------------------------- */
+a {
+  color: #ff2850;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c10024;
+}
+
+/* -----------------------------------------------------------------------------
+  
+  TEXT STUFFS
+
+----------------------------------------------------------------------------- */
+b,
+strong {
+  font-weight: 700;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+/* -----------------------------------------------------------------------------
+  
+  EMBEDDED CONTENT
+
+----------------------------------------------------------------------------- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* -----------------------------------------------------------------------------
+  
+  PRIMARY LAYOUT STUFF
+
+----------------------------------------------------------------------------- */
+.container {
+  margin: 0 auto;
+  padding: 0 24px;
+  max-width: 960px;
+}
+
+@media all and (min-width: 480px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+@media all and (min-width: 720px) {
+  .container {
+    padding: 0 48px;
+  }
+}
+/* -----------------------------------------------------------------------------
+  
+  DEMO HEADER
+
+----------------------------------------------------------------------------- */
+.demo-header {
+  margin: 0;
+  padding: 0;
+}
+
+.demo-header-nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #ff2850;
+}
+
+.demo-header-nav__link {
+  padding: 12px;
+  color: #fff;
+}
+
+.demo-header-nav__link:hover {
+  color: #fff;
+  background-color: #c10024;
+}
+
+.demo-header__title {
+  margin: 24px;
+  padding: 0;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 300;
+  text-align: center;
+}
+
+@media all and (min-width: 480px) {
+  .demo-header__title {
+    margin: 36px;
+    font-size: 42px;
+  }
+}
+/* -----------------------------------------------------------------------------
+
+  DEMO CONTENT
+
+----------------------------------------------------------------------------- */
+.leader-text {
+  color: #b3b3b3;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+@media all and (min-width: 480px) {
+  .leader-text {
+    font-size: 22px;
+  }
+}
+/* -----------------------------------------------------------------------------
+
+  DEMO CONTENT NAVIGATION
+
+----------------------------------------------------------------------------- */
+.demo-sub-nav {
+  margin: 0 0 24px 0;
+  padding: 0;
+}
+
+.demo-sub-nav__items {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.demo-sub-nav__item {
+  margin: 0;
+  padding: 4px;
+}
+
+.demo-sub-nav__link {
+  display: block;
+  margin: 0;
+  padding: 4px 24px;
+  border: solid 2px #ff2850;
+}
+
+.demo-sub-nav__link:hover,
+.demo-sub-nav__item.active .demo-sub-nav__link {
+  color: #fff;
+  background-color: #ff2850;
+}
+
+@media all and (min-width: 720px) {
+  .demo-sub-nav {
+    margin: 0 0 48px 0;
+  }
+}
+/* -----------------------------------------------------------------------------
+
+  DEMO FOOTER
+
+----------------------------------------------------------------------------- */
+.demo-footer {
+  padding: 12px 0;
+  text-align: center;
+}
+
+@media all and (min-width: 480px) {
+  .demo-footer {
+    padding: 24px 0;
+  }
+}
+@media all and (min-width: 720px) {
+  .demo-footer {
+    padding: 48px 0;
+  }
+}
+/* -----------------------------------------------------------------------------
+
+  CARBON AD
+  
+----------------------------------------------------------------------------- */
+#carbonads {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  z-index: 1000;
+  padding: 24px 12px 12px 12px;
+  width: 154px;
+  background-color: #fff;
+  line-height: 1.1;
+  border: solid 1px #e7e7e7;
+}
+
+.carbon-wrap {
+  display: block;
+  margin: 0 0 4px 0;
+}
+
+.carbon-img {
+  display: block;
+  margin: 0 0 4px 0;
+  padding: 0;
+  width: 130px;
+  height: 100px;
+}
+
+.carbon-text {
+  color: #818181;
+  font-size: 12px;
+}
+
+.carbon-poweredby {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.carbonad__close {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 12px;
+  height: 24px;
+  font-size: 11px;
+  line-height: 24px;
+}
+
+@media all and (max-width: 660px) {
+  #carbonads {
+    display: none;
+  }
+}

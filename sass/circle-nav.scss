@@ -1,0 +1,582 @@
+// -----------------------------------------------------------------------------
+//
+// CONFIGURATION
+// 
+// Configure the variables below to override defaults. If you want to tweak any
+// others, scroll through the individual sections below. More info about these
+// variables can be found by reading through the section comments, bue here's
+// a general rundown:
+// 
+// 1. Set up the initial navigation item radius.
+// 2. Decalare how many items our nav will contain.
+// 3. Set up a theme colour.
+// 4. The spread radius, which is how far the nav items spread from the origin.
+// 5. The delay increment, which is how much delay there is between each nav
+//    item leaving from / returning to the origin.
+// 6. The position of the nav, chosen from one of four values:
+//        `bottom-right`   - bottom right corner (this is the default)
+//        `bottom-left`    - bottom left corner
+//        `top-left`       - top left corner
+//        `top-right`      - top right corner
+// 7. Minimum height at which nav increases size.
+// 8. Minimum width at which nav increases size.
+// 9. The height of a bar in the toggle button.
+// 10. The spacing between bars in the toggle button.
+// 11. The padding between the left and right of the toggle button container and
+//     the bars.
+//
+// -----------------------------------------------------------------------------
+
+// $nav-item-radius: 48px;                  [1]
+// $num-items: 5;                           [2]
+// $nav-theme-color: rgb(255, 40, 60);      [3]
+// $spread-radius: 144px;                   [4]
+// $delay-increment: 0.1s;                  [5]
+// $nav-position: "bottom-right";           [6]
+// $mq-height: 480px;                       [7]
+// $mq-width: 480px;                        [8]
+// $button-bar-height: 4px !default;        [9]
+// $button-bar-spacing: 4px !default;       [10]
+// $button-lr-padding: 10px !default;       [11]
+
+
+
+
+
+// -----------------------------------------------------------------------------
+// 
+// NAV ITEMS SETUP
+// 
+// Some configuration for the appearance of the navigation items. These include:
+// 
+// 1. Set up the initial navigation item radius.
+// 2. Calculate initial diameter as a function of the radius.
+// 3. Decalare how many items our nav will contain.
+// 4. Set up a theme colour - I chose pink.
+// 
+// -----------------------------------------------------------------------------
+
+$nav-item-radius: 24px !default;                // [1]
+$nav-item-diameter: $nav-item-radius*2;         // [2]
+$num-items: 5 !default;                         // [3]
+$nav-theme-color: rgb(255, 40, 60) !default;    // [4]
+
+
+
+
+
+// -----------------------------------------------------------------------------
+// 
+// NAV POSITIONAL AND TIMING SET UP
+// 
+// These variables are strictly related to position and timing of navigation
+// items. It's important to remember that they fly out along a spread radius,
+// so the number of items combined with the delays and spread radius will
+// be responsible for actually positioning the menu. Here's what is set
+// up:
+// 
+// 1. The angular increment between nav items which is a function of the number
+//    of nav items.
+// 2. The angle, which is initialised to the increment.
+// 3. The spread radius, which is how far the nav items spread from the origin.
+// 4. The delay increment, which is how much delay there is between each nav
+//    item leaving from / returning to the origin.
+// 5. The initial delay, which is initialised to the delay increment.
+// 6. The "n minus 1 initial delay", which is the initial delay for the n-1
+//    nav item.
+// 7. The final delay, which is the delay of the final nav item.
+// 
+// -----------------------------------------------------------------------------
+
+$increment: 90deg/($num-items - 1);                               // [1]
+$angle: $increment;                                               // [2]
+$spread-radius: 144px !default;                                   // [3]
+$delay-increment: 0.1s !default;                                  // [4]
+$initial-delay: $delay-increment;                                 // [5]
+$n-minus-1-initial-delay: ($num-items - 2) * $delay-increment;    // [6]
+$final-delay: ($num-items - 1) * $delay-increment;                // [7]
+
+
+
+
+
+// -----------------------------------------------------------------------------
+//
+// POSITION MIXIN
+// 
+// By default, the nav is at the bottom right corner of the screen, and items
+// spread out in a quarter circle away from this point. You can change up the
+// $nav-position variable to move it to any of the four corners. Here's the
+// available options:
+// 
+// `bottom-right`   - bottom right corner (this is the default)
+// `bottom-left`    - bottom left corner
+// `top-left`       - top left corner
+// `top-right`      - top right corner
+// 
+// The functions below will check the variable and position accordingly. They
+// are:
+// 
+// 1. get-nav-position, which positions the nav in the correct corner
+// 2. translate-nav-item, which calculates the coordinates to translate nav
+//    items to, based on spread radius and angle.
+//
+// -----------------------------------------------------------------------------
+
+$nav-position: "bottom-right" !default;
+
+// [1]
+
+@mixin get-nav-position() {
+  @if ($nav-position == "bottom-right") {
+    bottom: 12px;
+    right: 12px;
+  }
+
+  @if ($nav-position == "bottom-left") {
+    bottom: 12px;
+    left: 12px;
+  }
+
+  @if ($nav-position == "top-left") {
+    top: 12px;
+    left: 12px;
+  }
+
+  @if ($nav-position == "top-right") {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+// [2]
+
+@mixin translate-nav-item($r, $theta, $n) {
+  
+  @if ($nav-position == "bottom-right") {
+    @if ($n == "first") {
+      transform: translate(-$r, 0);
+    } @else if ($n == "last") {
+      transform: translate(0, -$r);
+    } @else {
+      transform: translate(floor(-$r * cos($theta)), floor(-$r * sin($theta)));
+    }
+  }
+
+  @if ($nav-position == "bottom-left") {
+    @if ($n == "first") {
+      transform: translate($r, 0);
+    } @else if ($n == "last") {
+      transform: translate(0, -$r);
+    } @else {
+      transform: translate(floor($r * cos($theta)), floor(-$r * sin($theta)));
+    }
+  }
+
+  @if ($nav-position == "top-left") {
+    @if ($n == "first") {
+      transform: translate($r, 0);
+    } @else if ($n == "last") {
+      transform: translate(0, $r);
+    } @else {
+      transform: translate(floor($r * cos($theta)), floor($r * sin($theta)));
+    }
+  }
+
+  @if ($nav-position == "top-right") {
+    @if ($n == "first") {
+      transform: translate(-$r, 0);
+    } @else if ($n == "last") {
+      transform: translate(0, $r);
+    } @else {
+      transform: translate(floor(-$r * cos($theta)), floor($r * sin($theta)));
+    }
+  }
+
+}
+
+
+
+
+
+// -----------------------------------------------------------------------------
+// 
+// TOGGLE SWITCH SETUP
+// https://github.com/callmenick/Animating-Hamburger-Icons
+// 
+// Set up some initial configuration variables for the toggle switch. The
+// following variables are set:
+// 
+// 1. The initial height of a bar.
+// 2. The initial spacing in between bars.
+// 3. The left and right padding of the bars.
+// 
+// -----------------------------------------------------------------------------
+
+$button-bar-height: 4px !default;     // [1]
+$button-bar-spacing: 4px !default;    // [2]
+$button-lr-padding: 10px !default;    // [3]
+
+
+
+
+
+// -----------------------------------------------------------------------------
+// 
+// MEDIA QUERY MIXIN
+// 
+// This mixin is used in the actual CSS to make the nav items and spread radius
+// bigger beyond a certain minimum width and height. Edit the two variables
+// as you see fit. Variables are:
+// 
+// 1. Minimum height at which nav increases size.
+// 2. Minimum width at which nav increases size.
+// 
+// -----------------------------------------------------------------------------
+
+$mq-height: 480px !default;
+$mq-width: 480px !default;
+
+@mixin mq {
+  @media (min-width: #{$mq-width}) and (min-height: #{$mq-height}) {
+    @content;
+  }
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  CIRCLE NAV COMPONENT
+
+----------------------------------------------------------------------------- */
+
+/**
+ * This is the actual nav component. It consists of a nav element with an
+ * unordered list inside, and also a button to toggle the actual navigation.
+ * It's fixed to the bottom-right of the screen, and each of the items are
+ * positioned absolutely inside the parent nav tag. The default set up above is
+ * 5 navigation items. Because all the transforms and such are calculated wrt
+ * this number, you'll need to edit it accordingly depending on how many items
+ * you decide to put in the markup.
+ * 
+ * Example markup:
+ *
+ * <nav class="c-circle-nav">
+ *   <ul class="c-circle-nav__items">
+ *     <li class="c-circle-nav__item">
+ *       <a class="c-circle-nav__link"></a>
+ *     </li>
+ *     <li class="c-circle-nav__item">
+ *       <a class="c-circle-nav__link"></a>
+ *     </li>
+ *     ...
+ *   </ul>
+ * </nav>
+ */
+
+.c-circle-nav {
+  position: fixed;
+  @include get-nav-position;
+  z-index: 1000;
+  width: $nav-item-diameter;
+  height: $nav-item-diameter;
+  border-radius: $nav-item-radius;
+
+  @include mq {
+    width: $nav-item-diameter * 2;
+    height: $nav-item-diameter * 2;
+    border-radius: $nav-item-radius * 2;
+  }
+}
+
+.c-circle-nav__items {
+  display: block;
+  list-style: none;
+  position: absolute;
+  z-index: 90;
+  margin: 0;
+  padding: 0;
+}
+
+.c-circle-nav__item {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $nav-item-diameter;
+  height: $nav-item-diameter;
+  border-radius: $nav-item-radius;
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: 0.3s, 0.3s;
+  transition-timing-function: cubic-bezier(.35, -.59, .47, .97);
+
+  @include mq {
+    width: $nav-item-diameter * 2;
+    height: $nav-item-diameter * 2;
+    border-radius: $nav-item-radius * 2;
+  }
+}
+
+/**
+ * Transisition delays at the default state.
+ */
+
+.c-circle-nav__item:nth-child(1) {
+  transition-delay: $final-delay;
+}
+
+@for $i from 2 through ($num-items - 1) {
+  .c-circle-nav__item:nth-child(#{$i}) {
+    transition-delay: $n-minus-1-initial-delay;
+  }
+  $n-minus-1-initial-delay: $n-minus-1-initial-delay - $delay-increment;
+}
+
+.c-circle-nav__item:nth-child(#{$num-items}) {
+  transition-delay: 0s;
+}
+
+/**
+ * We're using the .is-active class, which is added to the nav via JavaScript.
+ * Once the nav is active, the items inherit the properties below. We will
+ * manually write out the transform properties for first and last items, as we
+ * already know their position. For all items in between though, we'll use some
+ * polar-to-cartesian math and some Sass functions to get the positioning.
+ */
+
+.c-circle-nav.is-active .c-circle-nav__item {
+  transition-timing-function: cubic-bezier(.35, .03, .47, 1.59);
+}
+
+.c-circle-nav.is-active .c-circle-nav__item:nth-child(1) {
+  transition-delay: 0s;
+  @include translate-nav-item($spread-radius, 0, "first");
+
+  @include mq {
+    @include translate-nav-item($spread-radius * 2, 0deg, "first");
+  }
+}
+
+@for $i from 2 through ($num-items - 1) {
+  .c-circle-nav.is-active .c-circle-nav__item:nth-child(#{$i}) {
+    transition-delay: $initial-delay;
+    @include translate-nav-item($spread-radius, $angle, "");
+
+    @include mq {
+      @include translate-nav-item($spread-radius * 2, $angle, "");
+    }
+  }
+  $initial-delay: $initial-delay + $delay-increment;
+  $angle: $angle + $increment;
+}
+
+.c-circle-nav.is-active .c-circle-nav__item:nth-child(#{$num-items}) {
+  transition-delay: $final-delay;
+  @include translate-nav-item($spread-radius, 90deg, "last");
+
+  @include mq {
+    @include translate-nav-item($spread-radius * 2, 90deg, "last");
+  }
+}
+
+/**
+ * Apart from the transform properties, we'll also make sure the items get
+ * the correct opacity.
+ */
+
+.c-circle-nav.is-active .c-circle-nav__item {
+  opacity: 1;
+}
+
+/**
+ * Let's style the links now. This is just boilerplate stuff, and of course,
+ * you'll probably want to change up the icons to match your needs. In any case,
+ * we'll do it here for the sake of completion.
+ */
+
+.c-circle-nav__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: $nav-item-radius;
+  box-shadow: inset 0 0 0 2px #fff;
+
+  @include mq {
+    border-radius: $nav-item-radius * 2;
+  }
+}
+
+.c-circle-nav__link img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.c-circle-nav__link:hover {
+  box-shadow: inset 0 0 0 2px $nav-theme-color;
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  THE TOGGLE COMPONENT
+
+----------------------------------------------------------------------------- */
+
+/**
+ * The toggle is a button element, and as such requires some resets that are
+ * unique to buttons. This button also inherits some funky stuff from my
+ * CSS animating hamburger menu icons demo, which can be found at this url:
+ * https://github.com/callmenick/Animating-Hamburger-Icons
+ */
+
+.c-circle-nav__toggle {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+  width: $nav-item-diameter;
+  height: $nav-item-diameter;
+  background-color: $nav-theme-color;
+  font: inherit;
+  font-size: 0;
+  text-indent: -9999px;
+  border-radius: $nav-item-radius;
+  transition: background 0.3s;
+
+  /* reset some browser defaults */
+  cursor: pointer;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+
+  @include mq {
+    width: $nav-item-diameter * 2;
+    height: $nav-item-diameter * 2;
+    border-radius: $nav-item-radius * 2;
+  }
+}
+
+.c-circle-nav__toggle:hover,
+.c-circle-nav__toggle:focus,
+.c-circle-nav__toggle.is-active {
+  outline: none;
+  background-color: darken($nav-theme-color, 20%);
+}
+
+.c-circle-nav__toggle span,
+.c-circle-nav__toggle span::before,
+.c-circle-nav__toggle span::after {
+  display: block;
+  position: absolute;
+  height: $button-bar-height;
+  background: #fff;
+  border-radius: $button-bar-height/4;
+
+  @include mq {
+    height: $button-bar-height * 2;
+    border-radius: ($button-bar-height * 2)/4;
+  }
+}
+
+.c-circle-nav__toggle span {
+  top: $nav-item-radius - $button-bar-height/2;
+  left: $button-lr-padding;
+  right: $button-lr-padding;
+  transition: background 0.3s;
+
+  @include mq {
+    top: ($nav-item-radius * 2) - ($button-bar-height * 2)/2;
+    left: $button-lr-padding * 2;
+    right: $button-lr-padding * 2;
+  }
+}
+
+.c-circle-nav__toggle span::before,
+.c-circle-nav__toggle span::after {
+  left: 0;
+  width: 100%;
+  content: "";
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0.3s, 0s;
+}
+
+.c-circle-nav__toggle span::before {
+  top: -$button-bar-height - $button-bar-spacing;
+  transition-property: top, transform;
+
+  @include mq {
+    top: -($button-bar-height * 2) - ($button-bar-spacing * 2);
+  }
+}
+
+.c-circle-nav__toggle span::after {
+  bottom: -$button-bar-height - $button-bar-spacing;
+  transition-property: bottom, transform;
+
+  @include mq {
+    bottom: -($button-bar-height * 2) - ($button-bar-spacing * 2);
+  }
+}
+
+/* button active state */
+
+.c-circle-nav__toggle.is-active span {
+  background: none;
+}
+
+.c-circle-nav__toggle.is-active span::before {
+  top: 0;
+  transform: rotate(45deg);
+  transition-delay: 0s, 0.3s;
+}
+
+.c-circle-nav__toggle.is-active span::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+  transition-delay: 0s, 0.3s;
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+
+  THE MASK COMPONENT
+
+----------------------------------------------------------------------------- */
+
+/**
+ * Here's the mask component, which actually gets created and inserted to the 
+ * DOM via JavaScript. It simply acts as an overlay to draw attention to the 
+ * navigation when it is active. It also uses the .is-acvite state class.
+ */
+
+.c-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.c-mask.is-active {
+  opacity: 1;
+  visibility: visible;
+}
