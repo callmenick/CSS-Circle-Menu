@@ -1,6 +1,6 @@
 # CSS Circle Fly-Out Navigation
 
-My circular fly-out CSS navigation menu component, built with CSS3.
+My circular fly-out CSS navigation menu component, built with CSS3. [View the demo here.](http://callmenick.com/_development/css-circle-menu/)
 
 ![Circle fly out menu](css-circle-menu-featured.png)
 
