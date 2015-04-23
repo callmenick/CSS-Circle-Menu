@@ -25,9 +25,9 @@ Using the Gulp workflow is hugely beneficial, because it makes the component muc
 // $nav-position: "bottom-right";           [6]
 // $mq-height: 480px;                       [7]
 // $mq-width: 480px;                        [8]
-// $button-bar-height: 4px !default;        [9]
-// $button-bar-spacing: 4px !default;       [10]
-// $button-lr-padding: 10px !default;       [11]
+// $button-bar-height: 4px;                 [9]
+// $button-bar-spacing: 4px;                [10]
+// $button-lr-padding: 10px;                [11]
 ```
 
 You can edit these as you see fit. Here's the breakdown of these 11 configuration options:
