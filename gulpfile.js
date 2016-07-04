@@ -10,34 +10,26 @@ var notifier = require('node-notifier');
 var notify = require('gulp-notify');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
-var sass = require('gulp-ruby-sass');
+var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
 // js task
 gulp.task('js', function() {
-  return gulp.src('./js/circleMenu.js')
-    .pipe(uglify())
+  return gulp.src('./js/src/**/*.js')
+    .pipe(uglify().on('error', function(err) {
+      console.log('Uglify error:', err);
+      this.emit('end');
+    }))
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('./js/'));
+    .pipe(gulp.dest('./js/dist/'));
 });
 
 // styles task
 gulp.task('styles', function() {
-  return sass('./sass', {
-      style: 'expanded',
-      compass: true,
-      noCache: true
-    })
-    .on('error', function(err) {
-      gutil.beep();
-      notifier.notify({
-        'title': 'Error',
-        'message': 'Error compiling sass. Check the console.'
-      });
-      console.log(err);
-    })
+  return gulp.src('./sass/**/*.scss')
+    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(gulp.dest('./css/'))
     .pipe(cssmin())
@@ -48,10 +40,10 @@ gulp.task('styles', function() {
 });
 
 // default task
-gulp.task('default', ['js', 'styles', 'watch']);
+gulp.task('default', ['js', 'styles']);
 
-// watcher
-gulp.task('watch', function() {
+// watch task
+gulp.task('watch', ['js', 'styles'], function() {
   gulp.watch('./js/src/**/*.js', ['js']);
   gulp.watch('./sass/*.scss', ['styles']);
 });

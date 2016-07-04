@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
 
-  FONTS
+  Fonts
 
 ----------------------------------------------------------------------------- */
 @font-face {
@@ -10,6 +10,7 @@
   src: url("../fonts/oxygen/oxygen-v5-latin-300.eot");
   src: local("Oxygen Light"), local("Oxygen-Light"), url("../fonts/oxygen/oxygen-v5-latin-300.eot?#iefix") format("embedded-opentype"), url("../fonts/oxygen/oxygen-v5-latin-300.woff2") format("woff2"), url("../fonts/oxygen/oxygen-v5-latin-300.woff") format("woff"), url("../fonts/oxygen/oxygen-v5-latin-300.ttf") format("truetype"), url("../fonts/oxygen/oxygen-v5-latin-300.svg#Oxygen") format("svg");
 }
+
 @font-face {
   font-family: 'Oxygen';
   font-style: normal;
@@ -17,6 +18,7 @@
   src: url("../fonts/oxygen/oxygen-v5-latin-regular.eot");
   src: local("Oxygen"), local("Oxygen-Regular"), url("../fonts/oxygen/oxygen-v5-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/oxygen/oxygen-v5-latin-regular.woff2") format("woff2"), url("../fonts/oxygen/oxygen-v5-latin-regular.woff") format("woff"), url("../fonts/oxygen/oxygen-v5-latin-regular.ttf") format("truetype"), url("../fonts/oxygen/oxygen-v5-latin-regular.svg#Oxygen") format("svg");
 }
+
 @font-face {
   font-family: 'Oxygen';
   font-style: normal;
@@ -24,9 +26,10 @@
   src: url("../fonts/oxygen/oxygen-v5-latin-700.eot");
   src: local("Oxygen Bold"), local("Oxygen-Bold"), url("../fonts/oxygen/oxygen-v5-latin-700.eot?#iefix") format("embedded-opentype"), url("../fonts/oxygen/oxygen-v5-latin-700.woff2") format("woff2"), url("../fonts/oxygen/oxygen-v5-latin-700.woff") format("woff"), url("../fonts/oxygen/oxygen-v5-latin-700.ttf") format("truetype"), url("../fonts/oxygen/oxygen-v5-latin-700.svg#Oxygen") format("svg");
 }
+
 /* -----------------------------------------------------------------------------
 
-  ROOT
+  Root
 
 ----------------------------------------------------------------------------- */
 *,
@@ -56,7 +59,7 @@ body {
 
 /* -----------------------------------------------------------------------------
 
-  HEADINGS
+  Headings
 
 ----------------------------------------------------------------------------- */
 h1,
@@ -72,7 +75,7 @@ h6 {
 
 /* -----------------------------------------------------------------------------
 
-  LINKS
+  Links
 
 ----------------------------------------------------------------------------- */
 a {
@@ -85,8 +88,8 @@ a:hover {
 }
 
 /* -----------------------------------------------------------------------------
-  
-  TEXT STUFFS
+
+  Text Stuff
 
 ----------------------------------------------------------------------------- */
 b,
@@ -100,8 +103,8 @@ em {
 }
 
 /* -----------------------------------------------------------------------------
-  
-  EMBEDDED CONTENT
+
+  Embedded Content
 
 ----------------------------------------------------------------------------- */
 img {
@@ -110,8 +113,8 @@ img {
 }
 
 /* -----------------------------------------------------------------------------
-  
-  PRIMARY LAYOUT STUFF
+
+  Primary Layout
 
 ----------------------------------------------------------------------------- */
 .container {
@@ -125,14 +128,16 @@ img {
     padding: 0 24px;
   }
 }
+
 @media all and (min-width: 720px) {
   .container {
     padding: 0 48px;
   }
 }
+
 /* -----------------------------------------------------------------------------
-  
-  DEMO HEADER
+
+  Demo Header
 
 ----------------------------------------------------------------------------- */
 .demo-header {
@@ -142,11 +147,9 @@ img {
 
 .demo-header-nav {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: #ff2850;
@@ -177,9 +180,10 @@ img {
     font-size: 42px;
   }
 }
+
 /* -----------------------------------------------------------------------------
 
-  DEMO CONTENT
+  Demo Content
 
 ----------------------------------------------------------------------------- */
 .leader-text {
@@ -193,9 +197,10 @@ img {
     font-size: 22px;
   }
 }
+
 /* -----------------------------------------------------------------------------
 
-  DEMO CONTENT NAVIGATION
+  Demo Sub Nav
 
 ----------------------------------------------------------------------------- */
 .demo-sub-nav {
@@ -205,14 +210,11 @@ img {
 
 .demo-sub-nav__items {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-flow: row wrap;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   list-style: none;
@@ -243,9 +245,10 @@ img {
     margin: 0 0 48px 0;
   }
 }
+
 /* -----------------------------------------------------------------------------
 
-  DEMO FOOTER
+  Demo Footer
 
 ----------------------------------------------------------------------------- */
 .demo-footer {
@@ -258,15 +261,17 @@ img {
     padding: 24px 0;
   }
 }
+
 @media all and (min-width: 720px) {
   .demo-footer {
     padding: 48px 0;
   }
 }
+
 /* -----------------------------------------------------------------------------
 
-  CARBON AD
-  
+  Carbon Ad
+
 ----------------------------------------------------------------------------- */
 #carbonads {
   position: fixed;

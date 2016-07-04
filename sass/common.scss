@@ -1,18 +1,8 @@
-// -----------------------------------------------------------------------------
-// 
-// IMPORT VARIABLES
-// 
-// -----------------------------------------------------------------------------
-
 @import "_variables";
-
-
-
-
 
 /* -----------------------------------------------------------------------------
 
-  FONTS
+  Fonts
 
 ----------------------------------------------------------------------------- */
 
@@ -55,13 +45,9 @@
        url('../fonts/oxygen/oxygen-v5-latin-700.svg#Oxygen') format('svg');
 }
 
-
-
-
-
 /* -----------------------------------------------------------------------------
 
-  ROOT
+  Root
 
 ----------------------------------------------------------------------------- */
 
@@ -90,13 +76,9 @@ body {
   line-height: $line-height--medium;
 }
 
-
-
-
-
 /* -----------------------------------------------------------------------------
 
-  HEADINGS
+  Headings
 
 ----------------------------------------------------------------------------- */
 
@@ -111,13 +93,9 @@ h6 {
   line-height: $line-height--small;
 }
 
-
-
-
-
 /* -----------------------------------------------------------------------------
 
-  LINKS
+  Links
 
 ----------------------------------------------------------------------------- */
 
@@ -130,13 +108,9 @@ a:hover {
   color: $color--theme-dark;
 }
 
-
-
-
-
 /* -----------------------------------------------------------------------------
-  
-  TEXT STUFFS
+
+  Text Stuff
 
 ----------------------------------------------------------------------------- */
 
@@ -150,13 +124,9 @@ em {
   font-style: italic;
 }
 
-
-
-
-
 /* -----------------------------------------------------------------------------
-  
-  EMBEDDED CONTENT
+
+  Embedded Content
 
 ----------------------------------------------------------------------------- */
 
@@ -165,13 +135,9 @@ img {
   height: auto;
 }
 
-
-
-
-
 /* -----------------------------------------------------------------------------
-  
-  PRIMARY LAYOUT STUFF
+
+  Primary Layout
 
 ----------------------------------------------------------------------------- */
 
@@ -181,29 +147,21 @@ img {
   max-width: 960px;
 }
 
-@media all and ( min-width: $breakpoint--small ) {
-
+@media all and (min-width: $breakpoint--small) {
   .container {
     padding: 0 24px;
   }
-
 }
 
-@media all and ( min-width: $breakpoint--medium ) {
-
+@media all and (min-width: $breakpoint--medium) {
   .container {
     padding: 0 48px;
   }
-
 }
 
-
-
-
-
 /* -----------------------------------------------------------------------------
-  
-  DEMO HEADER
+
+  Demo Header
 
 ----------------------------------------------------------------------------- */
 
@@ -237,22 +195,16 @@ img {
   text-align: center;
 }
 
-@media all and ( min-width: $breakpoint--small ) {
-  
+@media all and (min-width: $breakpoint--small) {
   .demo-header__title {
     margin: 36px;
     font-size: $font-size--ultra;
   }
-
 }
-
-
-
-
 
 /* -----------------------------------------------------------------------------
 
-  DEMO CONTENT
+  Demo Content
 
 ----------------------------------------------------------------------------- */
 
@@ -262,21 +214,15 @@ img {
   font-weight: 300;
 }
 
-@media all and ( min-width: $breakpoint--small ) {
-
+@media all and (min-width: $breakpoint--small) {
   .leader-text {
     font-size: $font-size--large;
   }
-
 }
-
-
-
-
 
 /* -----------------------------------------------------------------------------
 
-  DEMO CONTENT NAVIGATION
+  Demo Sub Nav
 
 ----------------------------------------------------------------------------- */
 
@@ -312,21 +258,15 @@ img {
   background-color: $color--theme;
 }
 
-@media all and ( min-width: $breakpoint--medium ) {
-  
+@media all and (min-width: $breakpoint--medium) {
   .demo-sub-nav {
     margin: 0 0 48px 0;
   }
-
 }
-
-
-
-
 
 /* -----------------------------------------------------------------------------
 
-  DEMO FOOTER
+  Demo Footer
 
 ----------------------------------------------------------------------------- */
 
@@ -335,30 +275,22 @@ img {
   text-align: center;
 }
 
-@media all and ( min-width: $breakpoint--small ) {
-
+@media all and (min-width: $breakpoint--small) {
   .demo-footer {
     padding: 24px 0;
   }
-
 }
 
-@media all and ( min-width: $breakpoint--medium ) {
-
+@media all and (min-width: $breakpoint--medium) {
   .demo-footer {
     padding: 48px 0;
   }
-
 }
-
-
-
-
 
 /* -----------------------------------------------------------------------------
 
-  CARBON AD
-  
+  Carbon Ad
+
 ----------------------------------------------------------------------------- */
 
 #carbonads {
@@ -405,10 +337,8 @@ img {
   line-height: 24px;
 }
 
-@media all and ( max-width: 660px ) {
-  
+@media all and (max-width: 660px) {
   #carbonads {
     display: none;
   }
-
 }
